@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Jonefer Codillo | EP Webcraft - Freelance Web Developer</title>
+
+        <meta name="description"
+            content="Jonefer Codillo - Freelance Web Developer at EP Webcraft. Building modern, responsive, and user-friendly websites with Laravel, Tailwind CSS, and AI-powered features.">
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: [
+                                'Plus Jakarta Sans',
+                                'sans-serif'
+                            ],
+                            mono: [
+                                'JetBrains Mono',
+                                'monospace'
+                            ],
+                        },
+
+                        colors: {
+                            brand: {
+                                green: '#22c55e',
+                                lime: '#a3e635',
+                                dark: '#050507',
+                                card: '#101012',
+                                border: '#1f1f23',
+                            }
+                        },
+
+                        boxShadow: {
+                            glow: '0 0 40px rgba(34,197,94,0.15)',
+                            'glow-lg': '0 0 70px rgba(34,197,94,0.20)',
+                        },
+
+                        keyframes: {
+                            float: {
+                                '0%, 100%': {
+                                    transform: 'translateY(0)'
+                                },
+                                '50%': {
+                                    transform: 'translateY(-10px)'
+                                }
+                            },
+
+                            glow: {
+                                '0%': {
+                                    boxShadow: '0 0 20px rgba(34,197,94,0.15)'
+                                },
+                                '100%': {
+                                    boxShadow: '0 0 40px rgba(34,197,94,0.35)'
+                                }
+                            }
+                        },
+
+                        animation: {
+                            float: 'float 6s ease-in-out infinite',
+                            glow: 'glow 2s ease-in-out infinite alternate',
+                        }
+                    }
+                }
+            }
+        </script>
+
+        <style>
+            /* =========================================================
+           BASE
+        ========================================================= */
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: #050507;
+                color: #e5e7eb;
+                overflow-x: hidden;
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+            }
+
+            ::selection {
+                background: #22c55e;
+                color: #000;
+            }
+
+            /* =========================================================
+           CUSTOM UTILITIES
+        ========================================================= */
+
+            .glass {
+                background: rgba(16, 16, 18, 0.68);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid rgba(255, 255, 255, 0.07);
+            }
+
+            .glass-strong {
+                background: rgba(10, 10, 12, 0.88);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .grid-pattern {
+                background-image:
+                    linear-gradient(rgba(255, 255, 255, 0.025) 1px,
+                        transparent 1px),
+                    linear-gradient(90deg,
+                        rgba(255, 255, 255, 0.025) 1px,
+                        transparent 1px);
+
+                background-size: 32px 32px;
+            }
+
+            .text-gradient {
+                background: linear-gradient(100deg,
+                        #ffffff 15%,
+                        #a3e635 85%);
+
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .green-gradient {
+                background: linear-gradient(135deg,
+                        #22c55e 0%,
+                        #a3e635 100%);
+            }
+
+            /* =========================================================
+           CARD HOVER
+        ========================================================= */
+
+            .card-hover {
+                transition:
+                    transform 0.35s ease,
+                    border-color 0.35s ease,
+                    box-shadow 0.35s ease,
+                    background 0.35s ease;
+            }
+
+            .card-hover:hover {
+                transform: translateY(-5px);
+                border-color: rgba(34, 197, 94, 0.28);
+
+                box-shadow:
+                    0 18px 50px rgba(0, 0, 0, 0.45),
+                    0 0 25px rgba(34, 197, 94, 0.08);
+            }
+
+            /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+            .js .reveal {
+                opacity: 0;
+                transform: translateY(24px);
+
+                transition:
+                    opacity 0.7s ease,
+                    transform 0.7s ease;
+            }
+
+            .js .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+            #navbar-inner {
+                transition:
+                    background 0.3s ease,
+                    box-shadow 0.3s ease,
+                    border-color 0.3s ease,
+                    transform 0.3s ease;
+            }
+
+            #navbar.scrolled #navbar-inner {
+                background: rgba(8, 8, 10, 0.94);
+                border-color: rgba(255, 255, 255, 0.1);
+
+                box-shadow:
+                    0 12px 35px rgba(0, 0, 0, 0.35),
+                    0 0 25px rgba(34, 197, 94, 0.04);
+            }
+
+            /* =========================================================
+           INPUTS
+        ========================================================= */
+
+            .form-input,
+            .form-select,
+            .form-textarea {
+                background: rgba(255, 255, 255, 0.035);
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                color: #ffffff;
+                transition:
+                    border-color 0.25s ease,
+                    background 0.25s ease,
+                    box-shadow 0.25s ease;
+            }
+
+            .form-input::placeholder,
+            .form-textarea::placeholder {
+                color: rgba(255, 255, 255, 0.28);
+            }
+
+            .form-input:focus,
+            .form-select:focus,
+            .form-textarea:focus {
+                outline: none;
+
+                border-color: rgba(34, 197, 94, 0.6);
+
+                background: rgba(255, 255, 255, 0.055);
+
+                box-shadow:
+                    0 0 0 3px rgba(34, 197, 94, 0.07);
+            }
+
+            /* =========================================================
+           SCROLLBAR
+        ========================================================= */
+
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: #050507;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: #22c55e;
+                border-radius: 999px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #a3e635;
+            }
+
+            /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+
+                *,
+                *::before,
+                *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+        </style>
+
+        <script>
+            document.documentElement.classList.add('js');
+        </script>
+    </head>
+
+    <body class="font-sans antialiased">
+
+        <!-- =========================================================
+         NAVIGATION
+    ========================================================= -->
+
+        <header id="navbar" class="fixed inset-x-0 top-0 z-50">
+            <nav class="mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+
+                <div id="navbar-inner" class="glass-strong rounded-2xl px-4 py-3 sm:px-6">
+
+                    <div class="flex items-center justify-between">
+
+                        <!-- Logo -->
+                        <a href="#" class="group flex items-center gap-3">
+                            <div
+                                class="flex h-9 w-9 items-center justify-center rounded-lg green-gradient font-mono text-[13px] font-bold text-black transition group-hover:animate-glow">
+                                EP
+                            </div>
+
+                            <span class="text-[15px] font-bold tracking-tight">
+                                EP
+                                <span class="font-medium text-white/60">
+                                    Webcraft
+                                </span>
+                            </span>
+                        </a>
+
+                        <!-- Desktop Navigation -->
+                        <div class="hidden items-center gap-7 md:flex">
+
+                            <a href="#about"
+                                class="font-mono text-[12px] uppercase tracking-[0.15em] text-white/55 transition hover:text-white">
+                                About
+                            </a>
+
+                            <a href="#skills"
+                                class="font-mono text-[12px] uppercase tracking-[0.15em] text-white/55 transition hover:text-white">
+                                Skills
+                            </a>
+
+                            <a href="#services"
+                                class="font-mono text-[12px] uppercase tracking-[0.15em] text-white/55 transition hover:text-white">
+                                Services
+                            </a>
+
+                            <a href="#portfolio"
+                                class="font-mono text-[12px] uppercase tracking-[0.15em] text-white/55 transition hover:text-white">
+                                Work
+                            </a>
+
+                            <a href="#contact"
+                                class="ml-1 rounded-full bg-white px-5 py-2.5 text-[12px] font-bold text-black transition hover:bg-brand-lime">
+                                Contact
+                            </a>
+
+                        </div>
+
+                        <!-- Mobile Toggle -->
+                        <button id="mobile-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"
+                            class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/15 md:hidden">
+
+                            <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+
+                            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div id="mobile-menu" class="hidden border-t border-white/5 pt-4 md:hidden">
+
+                        <div class="space-y-1">
+
+                            <a href="#about"
+                                class="block rounded-xl px-3 py-3 font-mono text-xs uppercase tracking-widest text-white/65 transition hover:bg-white/5 hover:text-white">
+                                About
+                            </a>
+
+                            <a href="#skills"
+                                class="block rounded-xl px-3 py-3 font-mono text-xs uppercase tracking-widest text-white/65 transition hover:bg-white/5 hover:text-white">
+                                Skills
+                            </a>
+
+                            <a href="#services"
+                                class="block rounded-xl px-3 py-3 font-mono text-xs uppercase tracking-widest text-white/65 transition hover:bg-white/5 hover:text-white">
+                                Services
+                            </a>
+
+                            <a href="#portfolio"
+                                class="block rounded-xl px-3 py-3 font-mono text-xs uppercase tracking-widest text-white/65 transition hover:bg-white/5 hover:text-white">
+                                Work
+                            </a>
+
+                            <a href="#contact"
+                                class="mt-3 block rounded-xl bg-white px-4 py-3 text-center text-sm font-bold text-black transition hover:bg-brand-lime">
+                                Contact Me
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <main>
+
+            <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+            <section class="relative overflow-hidden border-b border-white/5">
+
+                <!-- Background Grid -->
+                <div class="pointer-events-none absolute inset-0 grid-pattern opacity-60"></div>
+
+                <!-- Background Glow -->
+                <div
+                    class="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-green/10 blur-[140px]">
+                </div>
+
+                <div
+                    class="pointer-events-none absolute -bottom-32 -left-40 h-[450px] w-[450px] rounded-full bg-lime-400/5 blur-[120px]">
+                </div>
+
+                <!-- Main Content -->
+                <div
+                    class="relative mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 pb-20 pt-36 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.85fr)] lg:gap-12 lg:px-8 lg:pb-24 lg:pt-32">
+
+                    <!-- Left Content -->
+                    <div class="reveal max-w-2xl">
+
+                        <div
+                            class="inline-flex items-center gap-2 rounded-full glass px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">
+                            <span class="h-2 w-2 rounded-full bg-brand-green animate-pulse"></span>
+
+                            Available for freelance work
+                        </div>
+
+                        <h1
+                            class="mt-6 text-[44px] font-extrabold leading-[0.92] tracking-[-0.04em] sm:text-[56px] lg:text-[68px]">
+                            Jonefer
+                            <br>
+
+                            <span class="text-gradient">
+                                Codillo
+                            </span>
+                        </h1>
+
+                        <div class="mt-6 flex items-start gap-3">
+                            <span class="mt-2 h-px w-10 shrink-0 bg-white/20 sm:w-14"></span>
+
+                            <p
+                                class="font-mono text-[11px] uppercase leading-5 tracking-[0.14em] text-white/45 sm:text-xs">
+                                EP Webcraft
+                                <span class="mx-1">•</span>
+                                Freelance Web Developer
+                            </p>
+                        </div>
+
+                        <p class="mt-7 max-w-xl text-base font-medium leading-7 text-white/60 sm:text-[17px]">
+                            I build modern, fast, and user-friendly web applications.
+                            Focused on clean code, responsive design, and AI-powered
+                            experiences that convert.
+                        </p>
+
+                        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                            <a href="#portfolio"
+                                class="inline-flex items-center justify-center rounded-full green-gradient px-7 py-3.5 text-sm font-bold text-black transition hover:scale-[1.02]">
+                                View My Work
+                                <span class="ml-2">→</span>
+                            </a>
+
+                            <a href="#contact"
+                                class="inline-flex items-center justify-center rounded-full glass px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10">
+                                Contact Me
+                            </a>
+                        </div>
+
+                        <div
+                            class="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.15em] text-white/30 sm:gap-x-5">
+                            <span>Laravel</span>
+                            <span>•</span>
+                            <span>Tailwind</span>
+                            <span>•</span>
+                            <span>AI Integration</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Right Photo -->
+                    <div class="reveal relative flex items-center justify-center lg:justify-end"
+                        style="transition-delay: 150ms;">
+
+                        <div class="relative w-full max-w-[390px]">
+
+                            <!-- Floating Code Card -->
+                            <div
+                                class="absolute -left-24 top-10 z-20 hidden w-[200px] -rotate-6 rounded-2xl glass p-4 font-mono text-[10px] leading-5 text-white/40 xl:block">
+                                <span class="text-brand-green">
+                                    const
+                                </span>
+
+                                developer = {<br>
+
+                                &nbsp;&nbsp;name:
+                                <span class="text-brand-lime">
+                                    'Jonefer'
+                                </span>
+                                ,<br>
+
+                                &nbsp;&nbsp;stack: [
+                                <span class="text-brand-lime">
+                                    'Laravel'
+                                </span>
+                                ],<br>
+
+                                &nbsp;&nbsp;passion:
+                                <span class="text-brand-lime">
+                                    true
+                                </span>
+                                <br>
+
+                                }
+                            </div>
+
+
+                            <!-- Photo Card -->
+                            <div class="relative z-10 aspect-[4/5] w-full rounded-[30px] glass-strong p-2 shadow-glow">
+
+                                <div class="relative h-full w-full overflow-hidden rounded-[24px] bg-[#0f0f10]">
+
+                                    <img id="profile-photo" src="../my web/img/6.jpeg"
+                                        alt="Jonefer Codillo - Freelance Web Developer"
+                                        class="h-full w-full object-cover object-center">
+
+                                    <!-- Gradient Overlay -->
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent">
+                                    </div>
+
+                                    <!-- Image Information -->
+                                    <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+
+                                        <div class="flex items-end justify-between gap-4">
+
+                                            <div>
+                                                <p class="font-bold text-white">
+                                                    Jonefer Codillo
+                                                </p>
+
+                                                <p
+                                                    class="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-white/55">
+                                                    Web Developer • PH
+                                                </p>
+                                            </div>
+
+                                            <div
+                                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white font-mono text-sm font-bold text-black">
+                                                ✓
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Floating Badge -->
+                            <div
+                                class="absolute -bottom-5 -right-3 z-20 rounded-2xl glass-strong px-4 py-3 sm:-right-5 sm:px-5">
+
+                                <div class="flex items-center gap-3">
+
+                                    <div
+                                        class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full green-gradient text-black">
+                                        ⚡
+                                    </div>
+
+                                    <div>
+                                        <p class="text-xs font-bold leading-none">
+                                            100% Responsive
+                                        </p>
+
+                                        <p class="mt-1 font-mono text-[9px] uppercase tracking-widest text-white/45">
+                                            Clean Code
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             ABOUT
+        ====================================================== -->
+
+            <section id="about" class="scroll-mt-32 border-b border-white/5 py-24 sm:py-32">
+
+                <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                    <div class="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:gap-20">
+
+                        <!-- About Content -->
+                        <div class="reveal">
+
+                            <p class="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-green">
+                                01 — About Me
+                            </p>
+
+                            <h2 class="max-w-3xl text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl">
+                                Building digital products with
+                                <span class="text-white/30">
+                                    purpose & precision.
+                                </span>
+                            </h2>
+
+                            <div class="mt-8 max-w-3xl space-y-5 text-[15px] leading-7 text-white/60 sm:text-base">
+
+                                <p>
+                                    I'm
+                                    <strong class="font-semibold text-white">
+                                        Jonefer Codillo
+                                    </strong>,
+                                    a freelance web developer behind
+                                    <strong class="text-white">
+                                        EP Webcraft
+                                    </strong>.
+                                    I help startups, businesses, and founders turn
+                                    ideas into modern, responsive, and user-friendly
+                                    websites and web applications.
+                                </p>
+
+                                <p>
+                                    I specialize in the modern PHP ecosystem —
+                                    <span class="text-white">
+                                        Laravel, Tailwind CSS, Bootstrap, JavaScript
+                                    </span>
+                                    — and I integrate
+                                    <span class="text-brand-lime">
+                                        AI-powered features
+                                    </span>
+                                    to make products smarter, faster, and more engaging.
+                                </p>
+
+                                <p>
+                                    From landing pages to complex web systems, I focus
+                                    on performance, maintainability, and real business
+                                    results.
+                                </p>
+
+                            </div>
+
+
+                            <!-- Statistics -->
+                            <div class="mt-10 grid grid-cols-1 gap-6 border-t border-white/5 pt-8 sm:grid-cols-3">
+
+                                <div>
+                                    <p class="text-3xl font-bold text-white">
+                                        50+
+                                    </p>
+
+                                    <p class="mt-1 font-mono text-[9px] uppercase tracking-widest text-white/40">
+                                        Projects Delivered
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <p class="text-3xl font-bold text-white">
+                                        3+ Yrs
+                                    </p>
+
+                                    <p class="mt-1 font-mono text-[9px] uppercase tracking-widest text-white/40">
+                                        Experience
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <p class="text-3xl font-bold text-white">
+                                        100%
+                                    </p>
+
+                                    <p class="mt-1 font-mono text-[9px] uppercase tracking-widest text-white/40">
+                                        Client Focused
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Stack Card -->
+                        <div class="reveal h-fit rounded-[24px] glass p-6 sm:p-8" style="transition-delay: 100ms;">
+
+                            <div
+                                class="mb-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/30">
+                                <span class="h-1.5 w-1.5 rounded-full bg-brand-green"></span>
+
+                                Current Stack Focus
+                            </div>
+
+                            <div>
+
+                                <div class="flex items-center justify-between gap-4 border-b border-white/5 py-4">
+                                    <span class="text-sm">
+                                        Frontend Development
+                                    </span>
+
+                                    <span class="font-mono text-[10px] text-brand-green">
+                                        Expert
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center justify-between gap-4 border-b border-white/5 py-4">
+                                    <span class="text-sm">
+                                        Laravel Backend
+                                    </span>
+
+                                    <span class="font-mono text-[10px] text-brand-green">
+                                        Advanced
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center justify-between gap-4 border-b border-white/5 py-4">
+                                    <span class="text-sm">
+                                        AI Integration
+                                    </span>
+
+                                    <span class="font-mono text-[10px] text-brand-lime">
+                                        Specialty
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center justify-between gap-4 py-4">
+                                    <span class="text-sm">
+                                        Responsive Design
+                                    </span>
+
+                                    <span class="font-mono text-[10px] text-white/45">
+                                        Pixel Perfect
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div
+                                class="mt-6 rounded-xl border border-white/5 bg-white/[0.03] p-4 font-mono text-[11px] leading-6 text-white/45">
+                                <span class="text-white/20">
+                                    //
+                                </span>
+
+                                Mission: Ship fast, maintain quality, deliver value.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SKILLS
+        ====================================================== -->
+
+            <section id="skills" class="scroll-mt-32 border-b border-white/5 bg-white/[0.015] py-24 sm:py-28">
+
+                <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                    <div class="mb-14 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+
+                        <div class="reveal">
+
+                            <p class="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-green">
+                                02 — Skills
+                            </p>
+
+                            <h2 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+                                Crafted with modern tech.
+                            </h2>
+
+                        </div>
+
+                        <p class="reveal max-w-md text-sm leading-6 text-white/45" style="transition-delay: 100ms;">
+                            No fake percentages. Just real tools I use to build
+                            production-ready websites and applications.
+                        </p>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+
+                        <!-- Frontend -->
+                        <div class="reveal rounded-[20px] glass p-7 card-hover">
+
+                            <div class="mb-6 flex items-center gap-3">
+
+                                <div
+                                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-sm font-bold text-black">
+                                    FE
+                                </div>
+
+                                <h3 class="font-bold">
+                                    Frontend
+                                </h3>
+
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+
+                                <span
+                                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium">
+                                    HTML5
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium">
+                                    CSS3
+                                </span>
+
+                                <span class="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-black">
+                                    JavaScript
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-brand-green/20 bg-brand-green/10 px-3 py-1.5 text-xs font-bold text-brand-green">
+                                    Tailwind CSS
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium">
+                                    Bootstrap
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Backend -->
+                        <div class="reveal rounded-[20px] glass p-7 card-hover" style="transition-delay: 100ms;">
+
+                            <div class="mb-6 flex items-center gap-3">
+
+                                <div
+                                    class="flex h-10 w-10 items-center justify-center rounded-xl green-gradient text-sm font-bold text-black">
+                                    BE
+                                </div>
+
+                                <h3 class="font-bold">
+                                    Backend
+                                </h3>
+
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+
+                                <span class="rounded-full bg-brand-green px-3 py-1.5 text-xs font-bold text-black">
+                                    PHP
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-bold text-red-400">
+                                    Laravel
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium">
+                                    MySQL
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium">
+                                    REST API
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- AI -->
+                        <div class="reveal rounded-[20px] glass p-7 card-hover" style="transition-delay: 200ms;">
+
+                            <div class="mb-6 flex items-center gap-3">
+
+                                <div
+                                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-lime text-sm font-bold text-black">
+                                    AI
+                                </div>
+
+                                <h3 class="font-bold">
+                                    Other Expertise
+                                </h3>
+
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+
+                                <span class="rounded-full bg-brand-lime px-3 py-1.5 text-xs font-bold text-black">
+                                    AI Integration
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium">
+                                    AI-Powered Features
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium">
+                                    Responsive Design
+                                </span>
+
+                                <span
+                                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium">
+                                    Web App Development
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SERVICES
+        ====================================================== -->
+
+            <section id="services" class="scroll-mt-32 py-24 sm:py-32">
+
+                <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                    <p class="reveal mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-green">
+                        03 — Services
+                    </p>
+
+                    <h2 class="reveal max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl">
+                        Everything you need to launch and grow.
+                    </h2>
+
+
+                    <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+                        <!-- Service 1 -->
+                        <article class="reveal rounded-[20px] glass p-7 card-hover group">
+
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg transition group-hover:bg-brand-green group-hover:text-black">
+                                ◧
+                            </div>
+
+                            <h3 class="mt-5 font-bold">
+                                Custom Website Development
+                            </h3>
+
+                            <p class="mt-2 text-sm leading-6 text-white/50">
+                                Modern, fast, SEO-ready websites built from scratch
+                                to match your brand.
+                            </p>
+
+                        </article>
+
+
+                        <!-- Service 2 -->
+                        <article class="reveal rounded-[20px] glass p-7 card-hover group"
+                            style="transition-delay: 50ms;">
+
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg transition group-hover:bg-red-500 group-hover:text-white">
+                                L
+                            </div>
+
+                            <h3 class="mt-5 font-bold">
+                                Laravel Web App Development
+                            </h3>
+
+                            <p class="mt-2 text-sm leading-6 text-white/50">
+                                Scalable web applications, dashboards, and systems
+                                built with Laravel best practices.
+                            </p>
+
+                        </article>
+
+
+                        <!-- Service 3 -->
+                        <article class="reveal rounded-[20px] glass p-7 card-hover group"
+                            style="transition-delay: 100ms;">
+
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg transition group-hover:bg-brand-lime group-hover:text-black">
+                                ◩
+                            </div>
+
+                            <h3 class="mt-5 font-bold">
+                                Responsive Website Design
+                            </h3>
+
+                            <p class="mt-2 text-sm leading-6 text-white/50">
+                                Pixel-perfect layouts that look great on mobile,
+                                tablet, and desktop.
+                            </p>
+
+                        </article>
+
+
+                        <!-- Service 4 -->
+                        <article class="reveal rounded-[20px] glass p-7 card-hover group">
+
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg transition group-hover:bg-white group-hover:text-black">
+                                { }
+                            </div>
+
+                            <h3 class="mt-5 font-bold">
+                                Frontend Development
+                            </h3>
+
+                            <p class="mt-2 text-sm leading-6 text-white/50">
+                                Interactive UI with Tailwind CSS, JavaScript, and
+                                modern animations.
+                            </p>
+
+                        </article>
+
+
+                        <!-- Service 5 -->
+                        <article class="reveal rounded-[20px] glass p-7 card-hover group"
+                            style="transition-delay: 50ms;">
+
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg transition group-hover:bg-brand-green group-hover:text-black">
+                                { }
+                            </div>
+
+                            <h3 class="mt-5 font-bold">
+                                Backend Development
+                            </h3>
+
+                            <p class="mt-2 text-sm leading-6 text-white/50">
+                                Secure APIs, authentication, database design,
+                                and server-side logic.
+                            </p>
+
+                        </article>
+
+
+                        <!-- Service 6 -->
+                        <article class="reveal rounded-[20px] glass p-7 card-hover group"
+                            style="transition-delay: 100ms;">
+
+                            <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg transition group-hover:bg-brand-lime group-hover:text-black">
+                                ✦
+                            </div>
+
+                            <h3 class="mt-5 font-bold">
+                                AI Feature Integration
+                            </h3>
+
+                            <p class="mt-2 text-sm leading-6 text-white/50">
+                                Add chatbots, automation, and intelligent features
+                                to your web applications.
+                            </p>
+
+                        </article>
+
+
+                        <!-- Maintenance -->
+                        <article class="reveal sm:col-span-2 lg:col-span-3 rounded-[20px] glass p-6 card-hover">
+
+                            <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+
+                                <div class="flex items-start gap-4">
+
+                                    <div
+                                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white font-bold text-black">
+                                        ↻
+                                    </div>
+
+                                    <div>
+
+                                        <h3 class="font-bold">
+                                            Website Maintenance
+                                        </h3>
+
+                                        <p class="mt-1 text-sm text-white/50">
+                                            Ongoing updates, security patches, backups,
+                                            and performance monitoring.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <a href="#contact"
+                                    class="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-xs font-bold text-black transition hover:bg-brand-lime">
+                                    Get Support
+                                    <span class="ml-2">
+                                        →
+                                    </span>
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             TECHNOLOGY STACK
+        ====================================================== -->
+
+            <section class="border-y border-white/5 bg-white/[0.01] py-14">
+
+                <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                    <div
+                        class="reveal flex flex-wrap items-center justify-center gap-x-8 gap-y-5 font-mono text-[10px] uppercase tracking-widest text-white/25 lg:justify-between">
+
+                        <span class="flex items-center gap-2">
+                            <span class="h-4 w-4 rounded bg-[#E34F26]"></span>
+                            HTML
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <span class="h-4 w-4 rounded bg-[#1572B6]"></span>
+                            CSS
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <span class="h-4 w-4 rounded bg-[#F7DF1E]"></span>
+                            JavaScript
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <span class="h-4 w-4 rounded bg-[#06B6D4]"></span>
+                            Tailwind
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <span class="h-4 w-4 rounded bg-[#7952B3]"></span>
+                            Bootstrap
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <span class="h-4 w-4 rounded bg-[#777BB4]"></span>
+                            PHP
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <span class="h-4 w-4 rounded bg-[#FF2D20]"></span>
+                            Laravel
+                        </span>
+
+                        <span class="flex items-center gap-2 text-brand-lime">
+                            <span class="h-4 w-4 rounded green-gradient"></span>
+                            AI
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             PORTFOLIO
+        ====================================================== -->
+
+            <section id="portfolio" class="scroll-mt-32 py-24 sm:py-32">
+
+                <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                    <div class="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+
+                        <div class="reveal">
+
+                            <p class="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-green">
+                                04 — Selected Work
+                            </p>
+
+                            <h2 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+                                Projects that ship.
+                            </h2>
+
+                        </div>
+
+                        <a href="#contact"
+                            class="reveal self-start border-b border-white/20 pb-1 font-mono text-[10px] uppercase tracking-widest text-white/40 transition hover:text-white sm:self-auto">
+                            Start a project →
+                        </a>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+
+                        <!-- Project 1 -->
+                        <article class="reveal overflow-hidden rounded-[24px] glass card-hover">
+
+                            <div class="aspect-[16/10] bg-[#141416] p-3">
+
+                                <div
+                                    class="relative flex h-full items-center justify-center overflow-hidden rounded-[16px] bg-gradient-to-br from-zinc-800 to-zinc-900">
+
+                                    <span class="text-5xl opacity-20">
+                                        ◧
+                                    </span>
+
+                                    <div class="absolute left-4 top-4 flex gap-1.5">
+                                        <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-yellow-500"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="p-7">
+
+                                <div class="flex items-center justify-between gap-4">
+
+                                    <h3 class="font-bold text-lg">
+                                        Business Website
+                                    </h3>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest">
+                                        Live
+                                    </span>
+
+                                </div>
+
+                                <p class="mt-2 text-sm leading-6 text-white/50">
+                                    Corporate site with CMS, fast loading, and
+                                    conversion-focused landing pages.
+                                </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        HTML
+                                    </span>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        Tailwind
+                                    </span>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        JavaScript
+                                    </span>
+
+                                </div>
+
+                                <a href="#"
+                                    class="mt-5 inline-flex items-center gap-2 text-sm font-semibold transition-all hover:gap-3">
+                                    View Project
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- Project 2 -->
+                        <article class="reveal overflow-hidden rounded-[24px] glass card-hover"
+                            style="transition-delay: 80ms;">
+
+                            <div class="aspect-[16/10] bg-[#141416] p-3">
+
+                                <div
+                                    class="relative flex h-full items-center justify-center overflow-hidden rounded-[16px] bg-gradient-to-br from-red-950/30 to-zinc-900">
+
+                                    <span class="text-5xl opacity-20">
+                                        L
+                                    </span>
+
+                                    <div class="absolute left-4 top-4 flex gap-1.5">
+                                        <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-yellow-500"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="p-7">
+
+                                <div class="flex items-center justify-between gap-4">
+
+                                    <h3 class="font-bold text-lg">
+                                        Laravel Task Manager
+                                    </h3>
+
+                                    <span
+                                        class="rounded-full border border-red-500/20 bg-red-500/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-red-400">
+                                        Laravel
+                                    </span>
+
+                                </div>
+
+                                <p class="mt-2 text-sm leading-6 text-white/50">
+                                    Full task management system with teams,
+                                    roles, notifications, and reports.
+                                </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+
+                                    <span
+                                        class="rounded-full border border-red-500/20 bg-red-500/10 px-2.5 py-1 font-mono text-[10px] text-red-400">
+                                        Laravel
+                                    </span>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        PHP
+                                    </span>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        MySQL
+                                    </span>
+
+                                </div>
+
+                                <a href="#"
+                                    class="mt-5 inline-flex items-center gap-2 text-sm font-semibold transition-all hover:gap-3">
+                                    View Project
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- Project 3 -->
+                        <article class="reveal overflow-hidden rounded-[24px] glass card-hover">
+
+                            <div class="aspect-[16/10] bg-[#141416] p-3">
+
+                                <div
+                                    class="relative flex h-full items-center justify-center overflow-hidden rounded-[16px] bg-gradient-to-br from-emerald-950/30 to-zinc-900">
+
+                                    <span class="text-5xl opacity-20">
+                                        ✦
+                                    </span>
+
+                                    <div class="absolute left-4 top-4 flex gap-1.5">
+                                        <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-yellow-500"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="p-7">
+
+                                <div class="flex items-center justify-between gap-4">
+
+                                    <h3 class="font-bold text-lg">
+                                        Claim Tracking System
+                                    </h3>
+
+                                    <span
+                                        class="rounded-full border border-brand-green/20 bg-brand-green/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-brand-green">
+                                        System
+                                    </span>
+
+                                </div>
+
+                                <p class="mt-2 text-sm leading-6 text-white/50">
+                                    Internal system for tracking claims,
+                                    attachments, and workflow.
+                                </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        PHP
+                                    </span>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        Bootstrap
+                                    </span>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        MySQL
+                                    </span>
+
+                                </div>
+
+                                <a href="#"
+                                    class="mt-5 inline-flex items-center gap-2 text-sm font-semibold transition-all hover:gap-3">
+                                    View Project
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- Project 4 -->
+                        <article class="reveal overflow-hidden rounded-[24px] glass card-hover"
+                            style="transition-delay: 80ms;">
+
+                            <div class="aspect-[16/10] bg-[#141416] p-3">
+
+                                <div
+                                    class="relative flex h-full items-center justify-center overflow-hidden rounded-[16px] bg-gradient-to-br from-lime-950/30 to-zinc-900">
+
+                                    <span class="text-5xl opacity-20">
+                                        AI
+                                    </span>
+
+                                    <div class="absolute left-4 top-4 flex gap-1.5">
+                                        <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-yellow-500"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="p-7">
+
+                                <div class="flex items-center justify-between gap-4">
+
+                                    <h3 class="font-bold text-lg">
+                                        AI-Powered Web App
+                                    </h3>
+
+                                    <span
+                                        class="rounded-full bg-brand-lime px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-black">
+                                        AI • New
+                                    </span>
+
+                                </div>
+
+                                <p class="mt-2 text-sm leading-6 text-white/50">
+                                    Web application with AI integration for
+                                    content generation and smart automation.
+                                </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+
+                                    <span
+                                        class="rounded-full border border-brand-lime/20 bg-brand-lime/10 px-2.5 py-1 font-mono text-[10px] text-brand-lime">
+                                        AI Integration
+                                    </span>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        Laravel
+                                    </span>
+
+                                    <span
+                                        class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px]">
+                                        Tailwind
+                                    </span>
+
+                                </div>
+
+                                <a href="#"
+                                    class="mt-5 inline-flex items-center gap-2 text-sm font-semibold transition-all hover:gap-3">
+                                    View Project
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- Customization Notice -->
+                    <div
+                        class="reveal mt-8 flex flex-col gap-3 rounded-2xl glass p-5 text-sm sm:flex-row sm:items-center sm:justify-between">
+
+                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/40">
+                            Edit the project cards in index.html to replace placeholders.
+                        </p>
+
+                        <span
+                            class="w-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px]">
+                            Easy to customize
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             CONTACT
+        ====================================================== -->
+
+            <section id="contact" class="scroll-mt-32 border-t border-white/5 py-24 sm:py-32">
+
+                <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+
+                        <!-- Contact Information -->
+                        <div class="reveal">
+
+                            <p class="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-green">
+                                05 — Contact
+                            </p>
+
+                            <h2 class="max-w-2xl text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl">
+                                Let's build something
+                                <span class="text-white/30">
+                                    great.
+                                </span>
+                            </h2>
+
+
+                            <div class="mt-10 rounded-[20px] glass p-6 sm:p-7">
+
+                                <div class="flex items-center gap-4">
+
+                                    <img src="../my web/img/6.jpeg" alt="Jonefer Codillo"
+                                        class="h-12 w-12 rounded-full object-cover object-center">
+
+                                    <div>
+
+                                        <p class="font-bold">
+                                            Jonefer Codillo
+                                        </p>
+
+                                        <p class="mt-1 font-mono text-[9px] uppercase tracking-widest text-white/40">
+                                            EP Webcraft
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mt-6">
+
+                                    <a href="mailto:codillojonefer45@gmail.com"
+                                        class="flex items-center gap-3 font-mono text-sm text-white/65 transition hover:text-white">
+
+                                        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/5">
+                                            ✉
+                                        </span>
+
+                                        <span class="break-all">
+                                            codillojonefer45@gmail.com
+                                        </span>
+
+                                    </a>
+
+                                </div>
+
+
+                                <a href="mailto:codillojonefer45@gmail.com"
+                                    class="mt-7 flex w-full items-center justify-center rounded-full green-gradient px-6 py-3.5 text-sm font-bold text-black transition hover:scale-[1.01]">
+                                    Email Me
+                                    <span class="ml-2">
+                                        →
+                                    </span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Contact Form -->
+                        <div class="reveal rounded-[24px] glass p-6 sm:p-8" style="transition-delay: 100ms;">
+
+                            <h3 class="text-lg font-bold">
+                                Send a message
+                            </h3>
+
+                            <p class="mt-2 text-sm text-white/45">
+                                Frontend-only form. Connect it to your backend later.
+                            </p>
+
+
+                            <form id="contact-form" class="mt-7 space-y-5" onsubmit="return false;">
+
+                                <!-- Name + Email -->
+                                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+
+                                    <div>
+
+                                        <label for="name"
+                                            class="font-mono text-[9px] uppercase tracking-widest text-white/40">
+                                            Name
+                                        </label>
+
+                                        <input id="name" type="text" required placeholder="Your name"
+                                            class="form-input mt-2 w-full rounded-xl px-4 py-3 text-sm">
+
+                                    </div>
+
+                                    <div>
+
+                                        <label for="email"
+                                            class="font-mono text-[9px] uppercase tracking-widest text-white/40">
+                                            Email
+                                        </label>
+
+                                        <input id="email" type="email" required placeholder="you@email.com"
+                                            class="form-input mt-2 w-full rounded-xl px-4 py-3 text-sm">
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Service -->
+                                <div>
+
+                                    <label for="service"
+                                        class="font-mono text-[9px] uppercase tracking-widest text-white/40">
+                                        Service
+                                    </label>
+
+                                    <select id="service" class="form-select mt-2 w-full rounded-xl px-4 py-3 text-sm">
+                                        <option class="bg-black">
+                                            Custom Website
+                                        </option>
+
+                                        <option class="bg-black">
+                                            Laravel App
+                                        </option>
+
+                                        <option class="bg-black">
+                                            Frontend / Backend
+                                        </option>
+
+                                        <option class="bg-black">
+                                            AI Integration
+                                        </option>
+
+                                        <option class="bg-black">
+                                            Maintenance
+                                        </option>
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Message -->
+                                <div>
+
+                                    <label for="message"
+                                        class="font-mono text-[9px] uppercase tracking-widest text-white/40">
+                                        Message
+                                    </label>
+
+                                    <textarea id="message" required rows="5" placeholder="Tell me about your project..."
+                                        class="form-textarea mt-2 w-full resize-none rounded-xl px-4 py-3 text-sm"></textarea>
+
+                                </div>
+
+
+                                <!-- Button -->
+                                <button id="form-btn" type="submit"
+                                    class="w-full rounded-xl bg-white py-3.5 text-sm font-bold text-black transition hover:bg-brand-lime">
+                                    Send Message
+                                </button>
+
+
+                                <!-- Status -->
+                                <p id="form-msg" class="hidden text-center font-mono text-xs text-brand-green">
+                                    ✓ Message ready! Connect this form to your backend later.
+                                </p>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+        <footer class="border-t border-white/5 py-10">
+
+            <div
+                class="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+
+                <!-- Brand -->
+                <div class="flex items-center gap-3">
+
+                    <div
+                        class="flex h-8 w-8 items-center justify-center rounded-lg green-gradient font-mono text-[11px] font-bold text-black">
+                        EP
+                    </div>
+
+                    <div>
+
+                        <p class="text-sm font-bold">
+                            EP Webcraft
+                        </p>
+
+                        <p class="mt-1 font-mono text-[9px] text-white/40">
+                            ©
+                            <span id="year"></span>
+                            All rights reserved.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Footer Details -->
+                <div
+                    class="flex flex-col gap-2 font-mono text-[9px] uppercase tracking-widest text-white/30 sm:flex-row sm:items-center sm:gap-5">
+
+                    <a href="mailto:codillojonefer45@gmail.com" class="transition hover:text-white">
+                        codillojonefer45@gmail.com
+                    </a>
+
+                    <span class="hidden sm:inline">
+                        •
+                    </span>
+
+                    <span>
+                        Jonefer Codillo
+                    </span>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+        <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+        <script>
+            /* =========================================================
+               ELEMENTS
+            ========================================================== */
+
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            const navbar = document.getElementById('navbar');
+
+            const form = document.getElementById('contact-form');
+            const formButton = document.getElementById('form-btn');
+            const formMessage = document.getElementById('form-msg');
+
+            const yearElement = document.getElementById('year');
+
+
+            /* =========================================================
+               CURRENT YEAR
+            ========================================================== */
+
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+
+            /* =========================================================
+               MOBILE MENU
+            ========================================================== */
+
+            mobileToggle.addEventListener('click', () => {
+
+                const isOpen =
+                    !mobileMenu.classList.contains('hidden');
+
+                mobileMenu.classList.toggle('hidden');
+
+                menuIcon.classList.toggle('hidden');
+
+                closeIcon.classList.toggle('hidden');
+
+                mobileToggle.setAttribute(
+                    'aria-expanded',
+                    String(!isOpen)
+                );
+            });
+
+
+            /* Close menu after clicking a mobile link */
+            document
+                .querySelectorAll('#mobile-menu a')
+                .forEach((link) => {
+
+                    link.addEventListener('click', () => {
+
+                        mobileMenu.classList.add('hidden');
+
+                        menuIcon.classList.remove('hidden');
+
+                        closeIcon.classList.add('hidden');
+
+                        mobileToggle.setAttribute(
+                            'aria-expanded',
+                            'false'
+                        );
+                    });
+
+                });
+
+
+            /* =========================================================
+               SMOOTH SCROLL
+            ========================================================== */
+
+            document
+                .querySelectorAll('a[href^="#"]')
+                .forEach((anchor) => {
+
+                    anchor.addEventListener('click', (event) => {
+
+                        const targetId =
+                            anchor.getAttribute('href');
+
+                        if (
+                            !targetId ||
+                            targetId === '#'
+                        ) {
+                            return;
+                        }
+
+                        const target =
+                            document.querySelector(targetId);
+
+                        if (!target) {
+                            return;
+                        }
+
+                        event.preventDefault();
+
+                        const navbarHeight =
+                            navbar.offsetHeight;
+
+                        const targetPosition =
+                            target.getBoundingClientRect().top +
+                            window.scrollY -
+                            navbarHeight -
+                            20;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                    });
+
+                });
+
+
+            /* =========================================================
+               SCROLL REVEAL
+            ========================================================== */
+
+            const revealElements =
+                document.querySelectorAll('.reveal');
+
+            const observer =
+                new IntersectionObserver(
+                    (entries) => {
+
+                        entries.forEach((entry) => {
+
+                            if (!entry.isIntersecting) {
+                                return;
+                            }
+
+                            entry.target.classList.add('active');
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        });
+
+                    },
+                    {
+                        threshold: 0.12
+                    }
+                );
+
+            revealElements.forEach((element) => {
+                observer.observe(element);
+            });
+
+
+            /* =========================================================
+               NAVBAR SCROLL STATE
+            ========================================================== */
+
+            const updateNavbar = () => {
+
+                if (window.scrollY > 30) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+            };
+
+            window.addEventListener(
+                'scroll',
+                updateNavbar,
+                {passive: true}
+            );
+
+            updateNavbar();
+
+
+            /* =========================================================
+               CONTACT FORM
+            ========================================================== */
+
+            form.addEventListener('submit', (event) => {
+
+                event.preventDefault();
+
+                formMessage.classList.remove('hidden');
+
+                formButton.textContent =
+                    'Message Ready ✓';
+
+                formButton.classList.remove(
+                    'bg-white',
+                    'text-black'
+                );
+
+                formButton.classList.add(
+                    'bg-brand-green',
+                    'text-black'
+                );
+
+            });
+        </script>
+
+    </body>
+
+</html>
